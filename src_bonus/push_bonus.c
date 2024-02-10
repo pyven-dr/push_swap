@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 02:47:11 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/02/01 02:47:11 by pyven-dr         ###   ########.fr       */
+/*   Created: 2024/02/02 06:45:09 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/02/02 06:45:09 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	pa(t_stack *stack)
 {
-	t_stack	*stack;
+	if (stack->size_b == 0)
+		return (1);
+	stack->st_a[stack->size_b - 1] = stack->st_b[stack->size_a];
+	stack->st_b[stack->size_a] = '\0';
+	stack->size_b--;
+	stack->size_a++;
+	return (0);
+}
 
-	stack = malloc(sizeof(t_stack));
-	if (stack == NULL)
-		exit(1);
-	init_stack(stack, argc - 1);
-	parsing(stack, argv + 1, argc - 1);
-	if (argc > 2)
-	{
-		adjust_values(stack);
-		if (is_sorted(stack) == 1)
-			sort(stack);
-	}
-	free(stack->st_a);
-	free(stack->st_b);
-	free(stack);
+int	pb(t_stack *stack)
+{
+	if (stack->size_a == 0)
+		return (1);
+	stack->st_b[stack->size_a - 1] = stack->st_a[stack->size_b];
+	stack->st_a[stack->size_b] = '\0';
+	stack->size_a--;
+	stack->size_b++;
 	return (0);
 }

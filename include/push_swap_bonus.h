@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 05:50:27 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/02/01 05:50:27 by pyven-dr         ###   ########.fr       */
+/*   Created: 2024/02/10 02:26:05 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/02/10 02:26:05 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
-# include <unistd.h>
-# include <stdlib.h>
 # include "libft.h"
-# include <limits.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <errno.h>
 
 typedef struct s_stack
 {
@@ -27,8 +27,9 @@ typedef struct s_stack
 	int	size;
 }	t_stack;
 
-void	parsing(t_stack *stack, char **args, int size);
+void	error(t_stack *stack);
 void	init_stack(t_stack *stack, int size);
+void	parsing(t_stack *stack, char **args, int size);
 int		sa(t_stack *stack);
 int		sb(t_stack *stack);
 int		ss(t_stack *stack);
@@ -40,12 +41,7 @@ int		rr(t_stack *stack);
 int		rra(t_stack *stack);
 int		rrb(t_stack *stack);
 int		rrr(t_stack *stack);
+void	read_instruct(t_stack *stack);
 int		is_sorted(t_stack *stack);
-void	push_b(t_stack *stack);
-int		adjust_values(t_stack *stack);
-int		find_biggest(int *stack, int size);
-void	push_a(t_stack *stack);
-void	sort_3(t_stack *stack);
-void	sort(t_stack *stack);
 
 #endif

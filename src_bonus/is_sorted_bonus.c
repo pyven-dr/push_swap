@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_sorted_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 02:47:11 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/02/01 02:47:11 by pyven-dr         ###   ########.fr       */
+/*   Created: 2024/02/10 05:26:07 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/02/10 05:26:07 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	main(int argc, char **argv)
+int	is_sorted(t_stack *stack)
 {
-	t_stack	*stack;
+	int	i;
 
-	stack = malloc(sizeof(t_stack));
-	if (stack == NULL)
-		exit(1);
-	init_stack(stack, argc - 1);
-	parsing(stack, argv + 1, argc - 1);
-	if (argc > 2)
+	i = 1;
+	if (stack->size_a == 0)
+		return (1);
+	while (i < stack->size_a)
 	{
-		adjust_values(stack);
-		if (is_sorted(stack) == 1)
-			sort(stack);
+		if (stack->st_a[i - 1] > stack->st_a[i])
+			return (1);
+		i++;
 	}
-	free(stack->st_a);
-	free(stack->st_b);
-	free(stack);
 	return (0);
 }
