@@ -19,6 +19,8 @@ int	is_sorted(t_stack *stack)
 	i = 1;
 	if (stack->size_a == 0)
 		return (1);
+	if (stack->size_b != 0)
+		return (1);
 	while (i < stack->size_a)
 	{
 		if (stack->st_a[i - 1] > stack->st_a[i])
