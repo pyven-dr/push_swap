@@ -39,8 +39,6 @@ int	sb(t_stack *stack)
 
 int	ss(t_stack *stack)
 {
-	if (stack->size_a < 2 || stack->size_b < 2)
-		return (1);
 	swap(stack->st_a, stack->size_b);
 	swap(stack->st_b, stack->size_a);
 	return (0);
