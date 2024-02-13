@@ -43,8 +43,10 @@ int	sb(t_stack *stack)
 
 int	ss(t_stack *stack)
 {
-	swap(stack->st_a, stack->size_b);
-	swap(stack->st_b, stack->size_a);
+	if (stack->size_a > 1)
+		swap(stack->st_a, stack->size_b);
+	if (stack->size_b > 1)
+		swap(stack->st_b, stack->size_a);
 	if (write(1, "ss\n", 3) == -1)
 		return (1);
 	return (0);

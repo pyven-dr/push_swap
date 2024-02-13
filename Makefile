@@ -29,7 +29,7 @@ BONUS_SRC = main_bonus.c \
 			reverse_rotate_bonus.c \
 			rotate_bonus.c \
 			swap_bonus.c \
-			is_sorted_bonus.c \
+			is_sorted_bonus.c
 
 BUILD_DIR = .build
 

@@ -45,7 +45,9 @@ int	rb(t_stack *stack)
 
 int	rr(t_stack *stack)
 {
-	rotate(stack->st_a, stack->size_b, stack->size);
-	rotate(stack->st_b, stack->size_a, stack->size);
+	if (stack->size_a > 1)
+		rotate(stack->st_a, stack->size_b, stack->size);
+	if (stack->size_b > 1)
+		rotate(stack->st_b, stack->size_a, stack->size);
 	return (0);
 }

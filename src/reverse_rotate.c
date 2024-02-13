@@ -49,8 +49,10 @@ int	rrb(t_stack *stack)
 
 int	rrr(t_stack *stack)
 {
-	reverse_rotate(stack->st_a, stack->size, stack->size_b);
-	reverse_rotate(stack->st_b, stack->size, stack->size_a);
+	if (stack->size_a > 1)
+		reverse_rotate(stack->st_a, stack->size, stack->size_b);
+	if (stack->size_b > 1)
+		reverse_rotate(stack->st_b, stack->size, stack->size_a);
 	if (write(1, "rrr\n", 4) == -1)
 		return (1);
 	return (0);
