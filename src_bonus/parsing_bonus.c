@@ -60,14 +60,14 @@ static int	check_num(char *num)
 	return (0);
 }
 
-static int	check_dubs(int *stack, long num)
+static int	check_dubs(t_stack *stack, long num, int nb_num)
 {
 	int	i;
 
 	i = 0;
-	while (stack[i])
+	while (i < nb_num)
 	{
-		if (stack[i] == num)
+		if (stack->st_a[i] == num)
 			return (1);
 		i++;
 	}
@@ -87,7 +87,7 @@ void	parsing(t_stack *stack, char **args, int size)
 		num = ft_atol(args[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			error(stack);
-		if (check_dubs(stack->st_a, num) != 0)
+		if (check_dubs(stack, num, i) != 0)
 			error(stack);
 		stack->st_a[i] = (int)num;
 		i++;
