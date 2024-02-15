@@ -17,7 +17,7 @@ void	error(t_stack *stack)
 	free(stack->st_a);
 	free(stack->st_b);
 	free(stack);
-	if (write(1, "Error\n", 6) == -1)
+	if (write(2, "Error\n", 6) == -1)
 		exit(1);
 	exit(1);
 }
