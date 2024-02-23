@@ -2,6 +2,8 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+DFLAGS = -MD -MP
+
 INCLUDE_DIR = include
 
 IFLAGS = \
@@ -67,7 +69,7 @@ $(NAME): $(OBJ) $(LIBFT_DIR)/$(LIBFT)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(LIBFT_DIR)/$(LIBFT)
 	mkdir -p .build
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS) -c $< -o $@
 
 .PHONY: bonus
 bonus : $(NAME_BONUS)
@@ -75,11 +77,11 @@ bonus : $(NAME_BONUS)
 $(NAME_BONUS): $(BONUS_OBJ) $(LIBFT_DIR)/$(LIBFT)
 	$(CC) -o $(NAME_BONUS) $(CFLAGS) $(BONUS_OBJ) $(LIBFT_DIR)/$(LIBFT)
 
--include $(DEP)
+-include $(BONUS_DEP)
 
 $(BONUS_BUILD_DIR)/%.o: $(BONUS_SRC_DIR)/%.c $(LIBFT_DIR)/$(LIBFT)
 	mkdir -p .build_bonus
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS) -c $< -o $@
 
 $(LIBFT_DIR)/$(LIBFT): FORCE
 	$(MAKE) -C $(LIBFT_DIR) $(LIBFT)
